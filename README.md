@@ -20,3 +20,12 @@ A self-hosted DDNS solution for Route 53 hosted domains
 1. Clone this repository to your local machine or server:
    ```bash
    git clone https://github.com/ClairDeCoder/dynamic53.git
+2. Change directories into the new dynamic53 folder:
+   '''bash
+   cd dynamic53/
+3. Make install.sh executable:
+   '''bash
+   sudo chmod +x install.sh
+4. Run install:
+   '''bash
+   sudo ./install.sh

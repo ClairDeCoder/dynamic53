@@ -48,11 +48,9 @@ After installation, Dynamic53 will run as a service, automatically checking and 
    ```bash
    /etc/systemd/system/dynamic53.service
 
-
 # Contributing
 
 Contributions to Dynamic53 are welcome! Please feel free to submit issues, enhancements requests, and pull requests through the GitHub repository.
-
 
 # License
 

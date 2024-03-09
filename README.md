@@ -1,5 +1,5 @@
 # dynamic53
-A self-hosted DDNS solution for Route 53 hosted domains
+A self-hosted DDNS solution for Route 53 hosted domains, for use on Ubuntu/Debian servers and desktops
 
 ## Features
 
@@ -14,6 +14,7 @@ A self-hosted DDNS solution for Route 53 hosted domains
 - Python 3.x
 - pip (Python package installer)
 - AWS account and Route 53 hosted domain(s)
+- IAM user with Access ID & Secret Access Key
 
 ## Installation
 
@@ -21,11 +22,34 @@ A self-hosted DDNS solution for Route 53 hosted domains
    ```bash
    git clone https://github.com/ClairDeCoder/dynamic53.git
 2. Change directories into the new dynamic53 folder:
-   '''bash
+   ```bash
    cd dynamic53/
 3. Make install.sh executable:
-   '''bash
+   ```bash
    sudo chmod +x install.sh
 4. Run install:
-   '''bash
+   ```bash
    sudo ./install.sh
+
+# Usage
+
+After installation, Dynamic53 will run as a service, automatically checking and updating your DNS records based on the configured interval. This program was built for Ubuntu & Debian, based as a systemd service.
+
+1. You can view the logs for detailed information about the service's operations:
+   ```bash
+   tail -f /opt/ddns_updater/dynamic53.log
+2. You can check the service status of Dynamic53:
+   ```bash
+   sudo systemctl status dynamic53.service
+3. The directory for the program is located in /opt/ddns_updater/*
+4. The systemd service file is located in /etc/systemd/system/dynamic53.service
+
+
+# Contributing
+
+Contributions to Dynamic53 are welcome! Please feel free to submit issues, enhancements requests, and pull requests through the GitHub repository.
+
+
+# License
+
+Dynamic53 is released under the MIT License. See the LICENSE file for more details.

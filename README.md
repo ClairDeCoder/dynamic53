@@ -41,8 +41,12 @@ After installation, Dynamic53 will run as a service, automatically checking and 
 2. You can check the service status of Dynamic53:
    ```bash
    sudo systemctl status dynamic53.service
-3. The directory for the program is located in /opt/ddns_updater/*
-4. The systemd service file is located in /etc/systemd/system/dynamic53.service
+3. The directory for the program is located in:
+   ```bash
+   /opt/ddns_updater/*
+6. The systemd service file is located in:
+   ```bash
+   /etc/systemd/system/dynamic53.service
 
 
 # Contributing

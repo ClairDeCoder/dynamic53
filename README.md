@@ -1,4 +1,4 @@
-# dynamic53
+# Dynamic53
 A self-hosted DDNS solution for Route 53 hosted domains, for use on Ubuntu/Debian servers and desktops
 
 ## Features
@@ -52,4 +52,4 @@ Contributions to Dynamic53 are welcome! Please feel free to submit issues, enhan
 
 # License
 
-Dynamic53 is released under the MIT License. See the LICENSE file for more details.
+Dynamic53 is released under the MIT License.

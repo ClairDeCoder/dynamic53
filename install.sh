@@ -19,6 +19,7 @@ apt-get install -y python3 python3-pip
 
 # Install required Python packages
 pip3 install boto3 requests
+echo ""
 
 # Check for AWS credentials
 if [ -f "$HOME/.aws/credentials" ]; then

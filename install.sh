@@ -84,8 +84,8 @@ echo "Would you like to remove the installer and original script files? This can
 read -p "Proceed with cleanup? " response
 if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]
 then
-    rm -- "$0"  # Remove this installer script
-    rm -- "$(dirname "$0")/$SCRIPT_NAME"  # Remove the original dynamic53.py script
+    rm -- "$0"
+    rm -- "$(dirname "$0")/$SCRIPT_NAME"
     echo "Cleanup completed."
 else
     echo "Cleanup skipped."

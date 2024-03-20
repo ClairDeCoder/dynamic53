@@ -18,7 +18,7 @@ if [ "$(id -u)" -ne "0" ]; then
 fi
 
 # Create a dedicated user for running the script
-useradd -m -d "$INSTALL_DIR" -s /usr/sbin/nologin "$SERVICE_USER"
+useradd -s /usr/sbin/nologin "$SERVICE_USER"
 
 # Install Python3 and pip if they're not already installed
 echo "Updating repos..."

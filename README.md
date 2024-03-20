@@ -59,7 +59,7 @@ After installation, Dynamic53 will run as a service, automatically checking and 
 
 1. You can view the logs for detailed information about the service's operations:
    ```bash
-   tail -f /opt/ddns_updater/dynamic53.log
+   sudo tail -f /opt/ddns_updater/dynamic53.log
    ```
    **OR**
    ```bash

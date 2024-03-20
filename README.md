@@ -17,7 +17,7 @@ A self-hosted DDNS solution for Route 53 hosted domains, for use on Ubuntu/Debia
 - AWS account and Route 53 hosted domain(s)
 - IAM user with Access ID & Secret Access Key
 
-## Installation
+## Installation (CLONE)
 
 1. Clone this repository to your local machine or server:
    ```bash
@@ -29,6 +29,23 @@ A self-hosted DDNS solution for Route 53 hosted domains, for use on Ubuntu/Debia
    ```bash
    sudo chmod +x install.sh
 4. Run install:
+   ```bash
+   sudo ./install.sh
+
+# Installation (Compressed Download)
+
+1. Download the tar.gz file here:
+   https://github.com/ClairDeCoder/dynamic53/archive/refs/tags/Dynamic53.tar.gz
+2. Unzip the file:
+   ```bash
+   tar -xvzf Dynamic53.tar.gz
+3. Change directories:
+   ```bash
+   cd Dynamic53
+4. Set install command to execute:
+   ```bash
+   sudo chmod +x ./install.sh
+5. Run install:
    ```bash
    sudo ./install.sh
 

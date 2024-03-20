@@ -12,7 +12,7 @@ log_file = Path('./dynamic53.log')
 
 # Setup logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
-                    datefmt='%H:%M',
+                    datefmt='%Y-%m-%d %H:%M',
                     handlers=[logging.FileHandler(log_file), logging.StreamHandler()])
 
 def trim_log_file(log_file_path, max_lines=500):

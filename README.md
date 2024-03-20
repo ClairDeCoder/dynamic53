@@ -35,11 +35,11 @@ A self-hosted DDNS solution for Route 53 hosted domains, for use on Ubuntu/Debia
 # Installation (Compressed Download)
 
 1. Download the tar.gz file with the link below for graphical systems:  
-   https://github.com/ClairDeCoder/dynamic53/files/14663107/dynamic53.tar.gz  
+   https://github.com/ClairDeCoder/dynamic53/files/14663212/dynamic53.tar.gz  
    **OR**  
    For headless (terminal only):
    ```bash
-   wget https://github.com/ClairDeCoder/dynamic53/files/14663107/dynamic53.tar.gz
+   wget https://github.com/ClairDeCoder/dynamic53/files/14663212/dynamic53.tar.gz
 2. Unzip the file:
    ```bash
    tar -xvzf dynamic53.tar.gz

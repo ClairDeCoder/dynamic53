@@ -39,10 +39,18 @@ After installation, Dynamic53 will run as a service, automatically checking and 
 1. You can view the logs for detailed information about the service's operations:
    ```bash
    tail -f /opt/ddns_updater/dynamic53.log
-2. You can check the service status of Dynamic53:
+   **OR**
+   ```bash
+   sudo cat /opt/ddns_updater/dynamic53.log
+2. You can change your A records or AWS credentials anytime by editing the configuration:
+   ```bash
+   sudo nano /opt/ddns_updater/.config.json
+   **OR**
+   sudo vi /opt/ddns_updater/.config.json
+4. You can check the service status of Dynamic53:
    ```bash
    sudo systemctl status dynamic53.service
-3. The directory for the program is located in:
+5. The directory for the program is located in:
    ```bash
    /opt/ddns_updater/*
 6. The systemd service file is located in:

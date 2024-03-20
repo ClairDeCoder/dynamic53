@@ -45,7 +45,7 @@ A self-hosted DDNS solution for Route 53 hosted domains, for use on Ubuntu/Debia
    tar -xvzf dynamic53.tar.gz
 3. Change directories:
    ```bash
-   cd Dynamic53
+   cd dynamic53
 4. Set install command to execute:
    ```bash
    sudo chmod +x ./install.sh

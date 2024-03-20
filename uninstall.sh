@@ -15,7 +15,7 @@ INSTALL_DIR="/opt/ddns_updater"
 systemctl stop dynamic53.service
 
 # Disable the service
-systemctl disable dynamic53.service
+systemctl disable dynamic53.service > /dev/null 2>&1
 
 # Remove the systemd service file
 rm -f "$SERVICE_FILE"
@@ -24,7 +24,7 @@ rm -f "$SERVICE_FILE"
 systemctl daemon-reload
 
 # Remove the dedicated user
-userdel -r "$SERVICE_USER"
+userdel -r "$SERVICE_USER" > /dev/null 2>&1
 
 # Execute removal of dir after script is done running (preventing conflicts)
 nohup sh -c "sleep 5; rm -rf \"$INSTALL_DIR\"" &> /dev/null &

@@ -63,7 +63,7 @@ CONFIG="$CONFIG ], \"services\": [{\"url\": \"https://ifconfig.me\", \"response_
 
 # Create installation directory, move script, and write configuration
 mkdir -p "$INSTALL_DIR"
-mv "$(dirname "$0")/*" "$INSTALL_DIR"
+mv "$(dirname "$0")/$SCRIPT_NAME" "$INSTALL_DIR"
 echo $CONFIG > "$INSTALL_DIR/$CONFIG_NAME"
 
 # Change ownership of the directory to dedicated user

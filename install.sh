@@ -22,9 +22,9 @@ useradd -m -d "$INSTALL_DIR" -s /usr/sbin/nologin "$SERVICE_USER"
 
 # Install Python3 and pip if they're not already installed
 echo "Updating repos..."
-apt-get update  > /dev/null 2>&1
+apt-get update > /dev/null 2>&1
 echo "Confirming Python installation..."
-apt-get install -y python3 python3-pip  > /dev/null 2>&1
+apt-get install -y python3 python3-pip > /dev/null 2>&1
 
 # Install required Python packages
 echo "Getting necessary modules..."
@@ -96,7 +96,7 @@ WantedBy=multi-user.target" > $SERVICE_FILE
 
 # Enable and start the service
 systemctl daemon-reload
-systemctl enable dynamic53.service
+systemctl enable dynamic53.service > /dev/null 2>&1
 systemctl start dynamic53.service
 
 # Cleanup
@@ -104,4 +104,4 @@ echo "Cleaning up the mess"
 rm -- "$0"
 rm -- "$(dirname "$0")/$SCRIPT_NAME"
 echo ""
-echo -e "Congrats! You've made it! Dynamic53 has been successfully installed.\nPlease view the README file for details on logs and configurations @ https://github.com/ClairDeCoder"
+echo -e "Congrats! You've made it! Dynamic53 has been successfully installed.\n\nPlease view the README file for details on logs and configurations @ https://github.com/ClairDeCoder"

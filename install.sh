@@ -28,7 +28,7 @@ apt-get install -y python3 python3-pip  > /dev/null 2>&1
 
 # Install required Python packages
 echo "Getting necessary modules..."
-pip3 install boto3 requests
+pip3 install boto3 requests > /dev/null 2>&1
 echo ""
 
 # Check for AWS credentials

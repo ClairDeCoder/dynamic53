@@ -14,16 +14,19 @@ if [ "$(id -u)" -ne "0" ]; then
 fi
 
 # Install Python3 and pip if they're not already installed
-apt-get update
-apt-get install -y python3 python3-pip
+echo"Updating repos..."
+apt-get update  > /dev/null 2>&1
+echo"Confirming Python installation..."
+apt-get install -y python3 python3-pip  > /dev/null 2>&1
 
 # Install required Python packages
+echo"Getting necessary modules..."
 pip3 install boto3 requests
 echo ""
 
 # Check for AWS credentials
 if [ -f "$HOME/.aws/credentials" ]; then
-    echo "AWS credentials file found."
+    echo "AWS credentials file found! Let's go!"
     ACCESS_KEY=$(grep -oP 'aws_access_key_id\s*=\s*\K(.*)' "$HOME/.aws/credentials")
     SECRET_KEY=$(grep -oP 'aws_secret_access_key\s*=\s*\K(.*)' "$HOME/.aws/credentials")
 else
@@ -77,16 +80,9 @@ systemctl daemon-reload
 systemctl enable dynamic53.service
 systemctl start dynamic53.service
 
-echo "Dynamic53 installed and started successfully."
-
 # Cleanup
-echo "Would you like to remove the installer and original script files? This cannot be undone. [y/N]"
-read -p "Proceed with cleanup? " response
-if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]
-then
-    rm -- "$0"
-    rm -- "$(dirname "$0")/$SCRIPT_NAME"
-    echo "Cleanup completed."
-else
-    echo "Cleanup skipped."
-fi
+echo "Cleaning up the mess"
+rm -- "$0"
+rm -- "$(dirname "$0")/$SCRIPT_NAME"
+echo ""
+echo -e "Congrats! You've made it! Dynamic53 has been successfully installed.\nPlease view the README file for details on logs and configurations @ https://github.com/ClairDeCoder"

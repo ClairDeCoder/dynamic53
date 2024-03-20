@@ -8,7 +8,7 @@ A self-hosted DDNS solution for Route 53 hosted domains, for use on Ubuntu/Debia
 - **AWS Credentials Handling**: Utilizes existing AWS credentials when available; prompts for manual input if not.
 - **Robust Logging**: Detailed logging for monitoring updates and troubleshooting issues.
 - **Ease of Installation**: Comes with a Bash installation script to automate setup and dependency management.
-- **Security Aware**: If not utilizing AWS CLI credentials, Dynamic53 will securely store your input credentials into a hidden file that only the Dynamic53 (no-login) user has access to.
+- **Security Aware**: If not utilizing AWS CLI credentials, Dynamic53 will securely store your input credentials into a hidden file that only the Dynamic53 service user has access to.
 
 ## Prerequisites
 

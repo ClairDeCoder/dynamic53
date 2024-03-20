@@ -1,11 +1,15 @@
 #!/bin/bash
 
-# Script and config file names
+# Script/Config
 SCRIPT_NAME="dynamic53.py"
 CONFIG_NAME=".config.json"
+UNINSTALL_NAME="uninstall.sh"
 
-# Installation directory
+# Install directory
 INSTALL_DIR="/opt/ddns_updater"
+
+# Dedicated user
+SERVICE_USER="ddns_user"
 
 # Ensure running as root
 if [ "$(id -u)" -ne "0" ]; then
@@ -13,14 +17,17 @@ if [ "$(id -u)" -ne "0" ]; then
   exit 1
 fi
 
+# Create a dedicated user for running the script
+useradd -m -d "$INSTALL_DIR" -s /usr/sbin/nologin "$SERVICE_USER"
+
 # Install Python3 and pip if they're not already installed
-echo"Updating repos..."
+echo "Updating repos..."
 apt-get update  > /dev/null 2>&1
-echo"Confirming Python installation..."
+echo "Confirming Python installation..."
 apt-get install -y python3 python3-pip  > /dev/null 2>&1
 
 # Install required Python packages
-echo"Getting necessary modules..."
+echo "Getting necessary modules..."
 pip3 install boto3 requests
 echo ""
 
@@ -36,12 +43,12 @@ else
     echo
 fi
 
-# Ask for hosted zone ID and other inputs
+# Ask for hosted zone ID, timer, and records
 read -p "Enter your Route 53 hosted zone ID: " ZONE_ID
 read -p "Enter check interval in seconds (default is 900): " CHECK_INTERVAL
 read -p "How many A records do you want to configure? " NUM_RECORDS
 
-# Prepare configuration
+# Prep configuration
 CONFIG="{\"aws_credentials\": {\"access_key\": \"$ACCESS_KEY\", \"secret_key\": \"$SECRET_KEY\"}, \"check_interval\": $CHECK_INTERVAL, \"zone_id\": \"$ZONE_ID\", \"records\": ["
 
 for ((i=1; i<=NUM_RECORDS; i++)); do
@@ -59,7 +66,19 @@ mkdir -p "$INSTALL_DIR"
 cp "$(dirname "$0")/$SCRIPT_NAME" "$INSTALL_DIR"
 echo $CONFIG > "$INSTALL_DIR/$CONFIG_NAME"
 
-# Create a systemd service file
+# Change ownership of the directory to dedicated user
+chown -R "$SERVICE_USER":"$SERVICE_USER" "$INSTALL_DIR"
+
+# Secure directory and configuration file
+chmod 700 "$INSTALL_DIR"
+chmod 600 "$INSTALL_DIR/$CONFIG_NAME"
+
+# Setup uninstall script
+mv "$(dirname "$0")/$UNINSTALL_NAME" "$INSTALL_DIR"
+chmod 700 "$INSTALL_DIR/$UNINSTALL_NAME"
+chown root:root "$INSTALL_DIR/$UNINSTALL_NAME"
+
+# Create a systemd service
 SERVICE_FILE="/etc/systemd/system/dynamic53.service"
 echo "[Unit]
 Description=Dynamic53 DDNS Service
@@ -67,7 +86,7 @@ After=network.target
 
 [Service]
 Type=simple
-User=root
+User=$SERVICE_USER
 ExecStart=/usr/bin/env python3 $INSTALL_DIR/$SCRIPT_NAME
 WorkingDirectory=$INSTALL_DIR
 Restart=on-failure
